@@ -26,7 +26,7 @@
 	path = .tmux/tmux-themepack
 	url = https://github.com/jimeh/tmux-themepack
 	ignore = dirty
-
 [submodule ".custom_zsh/themes/powerlevel10k"]
 	path = .custom_zsh/themes/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k
+	ignore = dirty
