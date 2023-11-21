@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+function print_newlines () {
+    num_newlines="$1"
+    for ((i = 0; i < num_newlines; i++)); do
+        printf "\n"
+    done
+}
+
+cowclock () { 
+  while true; do
+    DATE=$(print_newlines $1 && TZ=Europe/Helsinki date +'%t %R | %A %d %B %Y | Day %j | Week %W' | cowsay -W 80 | centertext); 
+    RESULT=$(${@});
+    clear; 
+    echo "$DATE"; 
+    echo "$RESULT"; 
+    sleep 1; 
+  done; 
+}
+
+
+
+if [ "$#" -ne 1 ]; then
+  echo "Usage: $0 <number of newlines>"
+  exit 1
+fi
+
+newlines="$1"
+cowclock "$newlines"
