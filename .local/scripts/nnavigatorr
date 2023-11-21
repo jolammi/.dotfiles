@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+project=$(gitprojectfind)
+
+if [ -z "$project" ]; then
+    exit 0
+fi
+
+sessari="$(basename "$project")"
+if ! tmux has-session -t="$sessari" 2> /dev/null; then
+    tmux new-session -ds "$sessari" -c "$project"
+fi
+
+tmux switch-client -t "$sessari"
+ 
