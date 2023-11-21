@@ -69,6 +69,8 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
 
 #export PATH=$PATH:/home/jolammi/.pyenv/bin
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 pyenv deactivate > /dev/null 2>&1
