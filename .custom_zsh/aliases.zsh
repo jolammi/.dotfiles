@@ -18,3 +18,9 @@ function git_worktree_add(){
 
 alias gwa=git_worktree_add
 alias gitdf='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+# function to set up loval git identity
+setlocalgitidentity () {
+        git config --local user.name ${1}
+        git config --local user.email ${2}
+}
