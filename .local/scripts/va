@@ -18,6 +18,11 @@ do
     if [[ "$(pwd)" == ~ ]]; then
             printgray "Hit home root, abort"
             break
+    fi    
+    
+    if [[ "$(pwd)" == ~/Codes/ ]]; then
+            printgray "Hit home root, abort"
+            break
     fi
 
     if [[ "$(pwd)" == / ]]; then
