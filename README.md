@@ -14,7 +14,8 @@ The dotfiles and also some notes to set up a new system from scratch with less w
 - Install zsh if it is not already installed.  
   - https://askubuntu.com/a/131838/1195630: `chsh -s $(which zsh)` (should also work on macOS)  
 - VS Code  
-- A good terminal emulator  
+- A good terminal emulator
+- Lazygit from https://github.com/jesseduffield/lazygit/tree/master?tab=readme-ov-file#go
 
 ### Before cloning to a new machine
 - Install a nerd font for ligatures and p10k to work, e.g. Fira Code Nerd Font https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode  
