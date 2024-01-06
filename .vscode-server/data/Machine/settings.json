@@ -123,7 +123,7 @@
   "latex-workshop.view.pdf.viewer": "tab",
   "latex-workshop.latex.autoBuild.run": "never",
   "latex-workshop.bind.enter.key": false,
-  "workbench.colorTheme": "Monokai Pro",
+  "workbench.colorTheme": "SynthWave '84",
   "window.openFoldersInNewWindow": "on",
 
   "workbench.editor.labelFormat": "short",
