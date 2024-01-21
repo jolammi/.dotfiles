@@ -1,56 +1,35 @@
+
+# -------------------50------------------------->----------72--------->
 # Make two line commits. The first line should be a continuation for "If applied, this commit will ..."
 # e.g. If applied, this commit will remove deprecated methods
-# 
+#
 # Aim for 50 chars in the subject line, 72 chars is the hard limit.
 # Body (lines following the subject line) should be wrapped at 72 characters.
-# 
+#
 # Remember to separate subject line and body with one empty line.
 #
-# In the body, just focus on making clear the reasons why you made the change in the first place—the way things worked before  
+# In the body, just focus on making clear the reasons why you made the change in the first place—the way things worked before
 # the change (and what was wrong with that), the way they work now, and why you decided to solve it the way you did.
 
-# This line is 72 chars total -----------------------------------------
-# This line is 50 chars total -------------------
+-------------------------------------------
+# build: Changes that affect the build system or external dependencies (example scopes: Dockerfile, Docker-compose)
 
+# chore: some boring ass honest work
 
-# ------ build: Changes that affect the build system or external dependencies (example scopes: Dockerfile, Docker-compose)
-# -------------------50------------------------->----------72--------->
-#build:
+# ci: Changes to CI configuration files and scripts (example scopes: GitLab CI)
 
-# ----- chore: some boring ass honest work
-# -------------------50------------------------->----------72--------->
-#chore:
+# docs: Documentation only changes
 
-# ----- ci: Changes to CI configuration files and scripts (example scopes: GitLab CI)
-# -------------------50------------------------->----------72--------->
-#ci:
+# feat: A new feature
 
-# ----- docs: Documentation only changes
-# -------------------50------------------------->----------72--------->
-#docs:
+# fix: A bug fix
 
-# ----- feat: A new feature
-# -------------------50------------------------->----------72--------->
-#feat:
+# perf: A code change that improves performance
 
-# ----- fix: A bug fix
-# -------------------50------------------------->----------72--------->
-#fix:
+# refactor: A code change that neither fixes a bug nor adds a feature
 
-# ----- perf: A code change that improves performance
-# -------------------50------------------------->----------72--------->
-#perf:
+# style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
 
-# ---- refactor: A code change that neither fixes a bug nor adds a feature
-# -------------------50------------------------->----------72--------->
-#refactor:
-
-# ---- style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
-# -------------------50------------------------->----------72--------->
-#style:
-
-# ---- test: Adding missing tests or correcting existing tests
-# -------------------50------------------------->----------72--------->
-#test:
+# test: Adding missing tests or correcting existing tests
 
 
