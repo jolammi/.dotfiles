@@ -11,7 +11,7 @@
 # In the body, just focus on making clear the reasons why you made the change in the first place—the way things worked before
 # the change (and what was wrong with that), the way they work now, and why you decided to solve it the way you did.
 
--------------------------------------------
+# -------------------------------------------
 # build: Changes that affect the build system or external dependencies (example scopes: Dockerfile, Docker-compose)
 
 # chore: some boring ass honest work
