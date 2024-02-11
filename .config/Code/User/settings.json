@@ -35,7 +35,7 @@
     "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true
+      "source.organizeImports": "explicit"
     }
   },
   "[markdown]": {
@@ -121,7 +121,8 @@
   "editor.smoothScrolling": false,
   "editor.cursorSmoothCaretAnimation": "off",
   "latex-workshop.view.pdf.viewer": "tab",
-  "latex-workshop.latex.autoBuild.run": "never",
+  // "latex-workshop.view.pdf.invert": 0.99,
+  "latex-workshop.latex.autoBuild.run": "onSave",
   "latex-workshop.bind.enter.key": false,
   "workbench.colorTheme": "SynthWave '84",
   "window.openFoldersInNewWindow": "on",
@@ -135,7 +136,8 @@
     "editor.formatOnSave": true
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
   },
   "jupyter.interactiveWindow.textEditor.executeSelection": true,
   "editor.lineNumbers": "on",
