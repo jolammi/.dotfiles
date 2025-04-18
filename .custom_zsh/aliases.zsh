@@ -1,6 +1,5 @@
 alias venvi='source venv/bin/activate'
 # alias teevenvi=python -m venv venv'
-alias delmerged='git fetch && git branch -a && echo "\n\n" && git remote prune origin && git checkout master && echo "\n\n" && git branch --merged | grep -Ev "\*|master|development" | xargs -p git branch -d && echo "\n\n" && git branch -a'
 alias c=clear
 alias clock='TZ=Europe/Helsinki tty-clock -bc -C7 -f "  %t%A %d %B %Y%n%t%t%tDay %j | Week %W"'
 alias bat=batcat
@@ -19,6 +18,7 @@ function git_worktree_add(){
 
 alias gwa=git_worktree_add
 alias gitdf='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias asddf="gitdf status"
 
 # function to set up local git identity
 setlocalgitidentity () {
@@ -28,7 +28,7 @@ setlocalgitidentity () {
 
 # Install go if not installed
 
-GO_VERSION=1.21.5
+GO_VERSION=1.22.3
 install_go () {
     if [[ $(go version || true) == "go version go${GO_VERSION} linux/amd64" ]]; then
         echo up to date
@@ -53,26 +53,31 @@ review () {
     echo "$new_wt"
     cd "$new_wt"
 }
+
+git_hard_reset () {
+    if ! $(git rev-parse --show-toplevel 2> /dev/null); then
+        echo "Not inside a git repo, aborting"
+        return 1
+    fi
+
+    echo -n "Press 'y' to continue with git hard reset to origin/$(git_main_branch) > "
+    read -q key
+    echo
+    if [[ "$key" == "y" ]]; then
+        echo "Fetching origin..."
+        git fetch origin
+        echo "Hard resetting to fresh origin/$(git_main_branch)"
+        git reset --hard origin/$(git_main_branch)
+    else
+        echo "'y' not pressed. Aborting."
+        return 1
+    fi
+}
+alias ghr=git_hard_reset
+alias grh='ghr'
+
 compdef _git review=git checkout
 
-teevenvi () {
-  asd=$(pyenv versions | fzf | grep -oP "(\d+\.\d+\.\d+)")
+alias isonow="date +'%Y-%m-%dT%H:%M:%S%:z'"
 
-  if [ -z "$asd" ]
-  then
-    echo "Aborted."
-    return 1
-  else
-    echo "Activating Python ${asd} shell with pyenv"
-    pyenv shell $asd
-    echo "Activated."
-  fi
-  echo "Creating venv with Python ${asd}"
-  python -m venv venv
-  echo "Created."
-  source venv/bin/activate
-  echo "Venv activated"
 
-  pyenv shell --unset
-  echo "Pyenv shell deactivated."
-}

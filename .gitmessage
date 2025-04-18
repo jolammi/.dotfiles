@@ -32,4 +32,4 @@
 
 # test: Adding missing tests or correcting existing tests
 
-
+# deploy: Changes that affect the deployment, but are not related to CI or build system

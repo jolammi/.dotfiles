@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Courtesy of Sami Harju https://github.com/samharju/.dotfiles
 
+red="\033[0;31m"
 gray="\033[0;90m"
 green="\033[0;32m"
 yellow="\033[0;33m"
@@ -9,6 +10,9 @@ nocolor="\033[0;0m"
 rt=$(pwd)
 venvpath=""
 
+printred () {
+    echo "${red}$1${nocolor}"
+}
 printgray () {
     echo "${gray}$1${nocolor}"
 }
@@ -16,17 +20,17 @@ printgray () {
 while [[ -z $venvpath ]]
 do
     if [[ "$(pwd)" == ~ ]]; then
-            printgray "Hit home root, abort"
+            printred "Hit home root, abort"
             break
-    fi    
-    
-    if [[ "$(pwd)" == ~/Codes/ ]]; then
-            printgray "Hit home root, abort"
+    fi
+
+    if [[ "$(pwd)" == ~/Codes ]]; then
+            printred "Hit Codes root, abort"
             break
     fi
 
     if [[ "$(pwd)" == / ]]; then
-            printgray "Hit root, abort"
+            printred "Hit root, abort"
             break
     fi
     venvpath=$(fd -t f -I "activate$" | head -1)

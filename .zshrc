@@ -31,7 +31,7 @@ ZSH_CUSTOM=$HOME/.custom_zsh
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git tmux z docker docker-compose python pyenv zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git tmux z docker docker-compose python pyenv zsh-syntax-highlighting zsh-autosuggestions timewarrior)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -103,3 +103,10 @@ export PATH="$HOME/.local/scripts:$PATH"
 
 [ -f $HOME/.local_confs ] && source $HOME/.local_confs
 
+
+eval $(thefuck --alias)
+autoload -U compinit
+compinit -i
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(task --completion zsh)"

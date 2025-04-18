@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Get the Tmux window dimensions
+window_height=$(tmux display -p "#{window_height}")
+window_width=$(tmux display -p "#{window_width}")
+
+# Get the output of 'timew summary'
+summary_output=$(timew summary)
+
+# Calculate the number of lines (height) and the maximum line length (width)
+summary_lines=$(echo "$summary_output" | wc -l)
+max_line_length=$(echo "$summary_output" | awk '{print length}' | sort -nr | head -n1)
+
+# Calculate the pane width percentage for horizontal splitting (-h)
+pane_width_percentage=$(( (max_line_length * 100) / window_width + 3)) # Add 5% buffer
+
+# Ensure the pane width is within reasonable bounds
+if [ $pane_width_percentage -lt 5 ]; then
+    pane_width_percentage=5
+elif [ $pane_width_percentage -gt 50 ]; then
+    pane_width_percentage=50
+fi
+
+# Split the window and run the 'watch' command in the new pane
+tmux split-window -h -p $pane_width_percentage "watch -t -n1 timew summary :ids"
+
+# Return focus to the left pane
+tmux select-pane -L

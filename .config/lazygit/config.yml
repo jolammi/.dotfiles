@@ -2,3 +2,6 @@ gui:
   theme:
     selectedLineBgColor:
       - '#1f488f'
+promptToReturnFromSubprocess: false
+refresher:
+  refreshInterval: 2
