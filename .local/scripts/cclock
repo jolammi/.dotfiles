@@ -6,15 +6,15 @@ function print_newlines () {
     done
 }
 
-cowclock () { 
+cowclock () {
   while true; do
-    DATE=$(print_newlines $1 && TZ=Europe/Helsinki date +'%t %R | %A %d %B %Y | Day %j | Week %W' | cowsay -W 80 | centertext); 
-    RESULT=$(${@});
-    clear; 
-    echo "$DATE"; 
-    echo "$RESULT"; 
-    sleep 1; 
-  done; 
+    DATE=$(print_newlines $1 && TZ=Europe/Helsinki date +'%t %R | %A %d %B %Y | Day %j | Week %W' | cowsay -W 80 | centertext);
+    # RESULT=$(${@});
+    clear;
+    echo "$DATE";
+    echo "$RESULT";
+    sleep 1;
+  done;
 }
 
 

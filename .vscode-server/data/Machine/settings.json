@@ -1,4 +1,7 @@
 {
+  "workbench.editor.showTabs": "multiple",
+
+  "outline.collapseItems": "alwaysCollapse",
   "files.trimTrailingWhitespace": true,
   "explorer.compactFolders": false,
   "workbench.editor.enablePreviewFromQuickOpen": false,
@@ -12,33 +15,19 @@
     "selection.background": "#a9b5b9",
     "editorIndentGuide.background1": "#ffffff32",
     "editor.rangeHighlightBorder": "#88888847",
-    "editorGroup.border": "#9fb3c0ad",
     // "window.activeBorder": "#900000",
-    "tab.activeBorder": "#ffffffbc",
     "editor.selectionBackground": "#c0202dc4",
     "editor.selectionHighlightBackground": "#3c9bf38e",
     "scrollbarSlider.background": "#4e4e4e",
-    "scrollbarSlider.hoverBackground": "#959799"
-    // "editorBracketHighlight.foreground1": "#fac928",
-    // "editorBracketHighlight.foreground2": "#c122e9",
-    // "editorBracketHighlight.foreground3": "#057aff",
-    // "editorBracketHighlight.foreground4": "#00e74d",
-    // "editorBracketHighlight.foreground5": "#f51384",
-    // "editorBracketHighlight.foreground6": "#19f9d8",
-    // "editorBracketPairGuide.background1": "#fac9289E",
-    // "editorBracketPairGuide.background2": "#c122e99E",
-    // "editorBracketPairGuide.background3": "#057aff9E",
-    // "editorBracketPairGuide.background4": "#00e74d9E",
-    // "editorBracketPairGuide.background5": "#f513849E",
-    // "editorBracketPairGuide.background6": "#19f9d89E",
-    // "editorBracketPairGuide.activeBackground1": "#FAC9289E",
-    // "editorBracketPairGuide.activeBackground2": "#C122E99E",
-    // "editorBracketPairGuide.activeBackground3": "#057AFF9E",
-    // "editorBracketPairGuide.activeBackground4": "#00E7499E",
-    // "editorBracketPairGuide.activeBackground5": "#F513849E",
-    // "editorBracketPairGuide.activeBackground6": "#19F9D89E"
+    "scrollbarSlider.hoverBackground": "#959799",
+    // "activityBar.border": "#9fb3c0ad",
+    "editorGroup.border": "#727272ad",
+    "sideBar.border": "#727272ad",
+    "tab.activeBorder": "#ffffffbc",
+    "git.blame.editorDecorationForeground": "#a7a7a291"
   },
   "isort.args": ["--profile", "black"],
+  "flake8.args": ["--max-line-length=94"],
   "[python]": {
     "editor.rulers": [88],
     "editor.tabSize": 4,
@@ -62,11 +51,12 @@
   "[latex]": {
     "editor.wordWrap": "wordWrapColumn",
     "editor.wordWrapColumn": 85,
+    "editor.wordBasedSuggestions": "off",
     "editor.formatOnSave": false,
     "files.trimTrailingWhitespace": false,
     "editor.rulers": [85]
   },
-  "workbench.editor.closeEmptyGroups": false,
+  "workbench.editor.closeEmptyGroups": true,
   "editor.renderWhitespace": "all",
   "workbench.editor.limit.enabled": true,
   "workbench.editor.limit.perEditorGroup": true,
@@ -107,7 +97,7 @@
   "editor.lineHeight": 1.4,
   // "editor.fontWeight": "400",
   // --> ligatures enabled if the arrow on the left is one part
-  "editor.fontLigatures": true,
+  "editor.fontLigatures": false,
   "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono",
   "workbench.iconTheme": "vscode-icons",
   "python.analysis.typeCheckingMode": "basic",
@@ -135,17 +125,27 @@
   "latex-workshop.latex.autoBuild.run": "onSave",
   "latex-workshop.bind.enter.key": false,
   "workbench.colorTheme": "Gruvbox Material Dark",
+  "gruvboxMaterial.darkPalette": "material",
+  "gruvboxMaterial.darkWorkbench": "material",
+  "gruvboxMaterial.darkContrast": "hard",
+
+  "gruvboxMaterial.italicKeywords": false,
   "window.openFoldersInNewWindow": "on",
 
   "workbench.editor.labelFormat": "short",
   "editor.stickyScroll.enabled": true,
   "notebook.output.textLineLimit": 3000,
   "git.openDiffOnClick": true,
+  "git.blame.editorDecoration.enabled": true,
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   },
   "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   },
@@ -157,8 +157,6 @@
   "vim.useSystemClipboard": true,
   "editor.cursorSurroundingLines": 20,
   "jupyter.askForKernelRestart": false,
-  "gruvboxMaterial.darkContrast": "hard",
-  "gruvboxMaterial.darkWorkbench": "material",
 
   "editor.bracketPairColorization.enabled": true,
   "editor.guides.indentation": true,
@@ -176,5 +174,7 @@
     ["[", "]"],
     ["(", ")"],
     ["{", "}"]
-  ]
+  ],
+  "plantuml.server": "http://localhost:8624",
+  "plantuml.render": "PlantUMLServer"
 }

@@ -30,3 +30,10 @@
 	path = .custom_zsh/themes/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k
 	ignore = dirty
+[submodule "tmux"]
+	path = tmux
+	url = https://github.com/tmux/tmux.git
+        ignore = dirty
+[submodule "lazygit"]
+	path = lazygit
+	url = https://github.com/jesseduffield/lazygit

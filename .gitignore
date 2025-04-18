@@ -1,1 +1,7 @@
-*
+Codes
+.vscode-server
+.cache
+.docker
+.local_confs
+.python_history*
+.zcompdump*

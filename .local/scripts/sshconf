@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+
+# Initialize a variable to track the presence of the -e flag
+e_flag=false
+ssh_config_file="$HOME/.ssh/config"
+
+# Use getopts to parse the options
+while getopts ":e" opt; do
+  case $opt in
+    e)
+      e_flag=true
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      exit 1
+      ;;
+  esac
+done
+
+# Shift the processed options away
+shift $((OPTIND -1))
+
+# Now you can use the e_flag variable in your script
+if [ "$e_flag" = true ]; then
+  nano "$ssh_config_file"
+else
+  cat "$ssh_config_file"
+fi
