@@ -26,12 +26,12 @@ These exist primarily for my own sanity. However, if they are useful to you, fee
 - If needed, set `git config --global http.proxy <proxy>`
 
 ### Cloning
-Run the following commands. `gitdf` command is persisted in the dotfiles setup.
+Run the following commands. `dotfiles` command is persisted in the dotfiles setup.
 ```
-alias gitdf='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 git clone --bare git@github.com:jolammi/.dotfiles.git .dotfiles
-gitdf checkout
-gitdf submodule update --init --recursive
+dotfiles checkout
+dotfiles submodule update --init --recursive
 ```
 
 ### After cloning

@@ -17,8 +17,8 @@ function git_worktree_add(){
 }
 
 alias gwa=git_worktree_add
-alias gitdf='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-alias asddf="gitdf status"
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias asddf="dotfiles status"
 
 # function to set up local git identity
 setlocalgitidentity () {
@@ -27,8 +27,8 @@ setlocalgitidentity () {
 }
 
 setlocalgitidentity_dotfiles () {
-        gitdf config --local user.name ${1}
-        gitdf config --local user.email ${2}
+        dotfiles config --local user.name ${1}
+        dotfiles config --local user.email ${2}
 }
 
 # Install go if not installed
