@@ -1,5 +1,7 @@
 # .dotfiles
-The dotfiles and also some notes to set up a new system from scratch with less work.
+The dotfiles and also some notes to set up a new system from scratch with less work.  
+They are made for Ubuntu. Mileage may vary in other systems, especially non-Debian.  
+These exist primarily for my own sanity. However, if they are useful to you, feel free to use!  
 
 ## Important files and folders for machine-specific stuff
 `.local_confs`: set machine-specific settings, env variables etc here  
@@ -11,51 +13,61 @@ The dotfiles and also some notes to set up a new system from scratch with less w
 ## Initialization
 ### Checklist of other tools
 - Docker and Docker Compose, if they can be used in the organization. Otherwise install the required alternative  
-- Install zsh if it is not already installed.  
+  - Remember to do any custom docker configuration if needed (mirrors, logging defaults, authentication tokens etc.) 
+- Install zsh if it is not already installed
   - https://askubuntu.com/a/131838/1195630: `chsh -s $(which zsh)` (should also work on macOS)  
 - VS Code  
 - A good terminal emulator
-- Lazygit from https://github.com/jesseduffield/lazygit/tree/master?tab=readme-ov-file#go
 
 ### Before cloning to a new machine
 - Install a nerd font for ligatures and p10k to work, e.g. Fira Code Nerd Font https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode  
-- `fd` is needed for some of the stuff. Install by hand from package manager.  
+- `fd` and `tree` are needed for some of the stuff. Install by hand from package manager.
+- Ensure that system proxies are set to shell, if behind a proxy.
+- If needed, set `git config --global http.proxy <proxy>`
+
+### Cloning
+Run the following commands. `gitdf` command is persisted in the dotfiles setup.
+```
+alias gitdf='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+git clone --bare git@github.com:jolammi/.dotfiles.git .dotfiles
+gitdf checkout
+gitdf submodule update --init --recursive
+```
+
 ### After cloning
 - `fzf` needs manual installation with ~/.fzf/install in order to work  
-### Basic setup
-When cloning onto a new machine:  
-```
-git clone --bare git@github.com:jolammi/.dotfiles.git .dotfiles
-git --git-dir=$HOME/.dotfiles --work-tree=$HOME checkout
-git --git-dir=$HOME/.dotfiles --work-tree=$HOME submodule init
-git --git-dir=$HOME/.dotfiles --work-tree=$HOME submodule update --remote --merge
-```
+- Create the symlink to `~/.local/bin` like instructed in https://github.com/sharkdp/fd?tab=readme-ov-file#on-ubuntu
+- Install taskfile with `utils/install-taskfile-linux.sh`
+- Build tmux with `task tmux`
+  - When not doing this, I noticed that the `tmux_sessionizer` script could not use `fd` due to `fd` missing from path.
+  - One fix was to symlink fd to `/usr/local/bin` but building with `task tmux` and refreshing shell session worked so I did not end up doing that.
+- Lazygit is included as a submodule, ensure go is installed and run go install 
+  - Install Lazygit from https://github.com/jesseduffield/lazygit/tree/master?tab=readme-ov-file#go
 
-After the basic setup, the `gitdf` command should be available in the home folder, to use git with dotfiles effectively.
+
+
 ### Git 
+No global git user email exists in this repo because I use this repo on multiple machines, work and personal.
+After cloning a repo, set the correct name and email with the helper functions in `.custom_zsh/aliases.zsh`.
+
 Set Git identity to new machine for the dotfiles repo:  
 ```
-gitdf config --local user.name "Jouni Lammi"
-gitdf config --local user.email "..."
-
+setlocalgitidentity_dotfiles "Name" "email"
 ```
-For other repos, there is a function in `.custom_zsh/aliases.zsh` to set up the identity. Different identities may be needed
-for different emails and remotes (work, personal github, ...):  
-```bash
-setlocalgitidentity () {
-        git config --local user.name ${1}
-        git config --local user.email ${2}
-}
-```  
-Usage: `setlocalgitidentity "Jouni Lammi" "email"`  
-ZSH autocompletion will likely keep this handy so it doesn't need to be typed out every time.
 
-You can also create specific commands to e.g. `.local_confs` to set the identity without parameters, e.g.  
+For other repos, use
+```
+setlocalgitidentity "Name" "email"
+```
+
+ZSH autocompletion is enabled in the config, and will keep this handy so it doesn't need to be typed out every time.
+
+Of course you can also create specific commands to e.g. `.local_confs` to set the identity without parameters, e.g.  
 ```
 setlocalgitidentity_personal () {
         git config --local user.name "Jouni Lammi"
-        git config --local user.email "email"
+        git config --local user.email "myworkemail"
 }
 ```  
-## Disclaimer
+## Thanks
 The basic layout and some of the scripts are borrowed from Sami Harju's dotfiles, https://github.com/samharju/.dotfiles.
