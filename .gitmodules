@@ -37,3 +37,6 @@
 [submodule "lazygit"]
 	path = lazygit
 	url = https://github.com/jesseduffield/lazygit
+[submodule ".custom_zsh/plugins/timewarrior"]
+	path = .custom_zsh/plugins/timewarrior
+	url = https://github.com/svenXY/timewarrior
