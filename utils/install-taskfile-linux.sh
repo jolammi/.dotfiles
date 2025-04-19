@@ -18,6 +18,7 @@ cat "$TMP_DIR"/task_checksums.txt | grep "task_linux_amd64.tar.gz" | sha256sum -
 
 tar -xzf task_linux_amd64.tar.gz
 
+mkdir -p "$HOME"/bin
 mv "$TMP_DIR"/task "$HOME"/bin
 rm -rf "$TMP_DIR"
 
