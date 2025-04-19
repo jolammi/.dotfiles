@@ -26,6 +26,11 @@ setlocalgitidentity () {
         git config --local user.email ${2}
 }
 
+setlocalgitidentity_dotfiles () {
+        gitdf config --local user.name ${1}
+        gitdf config --local user.email ${2}
+}
+
 # Install go if not installed
 
 GO_VERSION=1.22.3
