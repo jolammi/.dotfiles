@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-fd --ignore-file="$HOME/.fdprojectignore" -I -H -t d "\.git$" "$HOME/Codes" | sed -e 's|/.git$||' | fzf --header='git projects' --header-first --preview "tree -C -L 1 --dirsfirst {}" --tmux
+fd --ignore-file="$HOME/.fdprojectignore" -I -H -t d "\.git$" "$HOME/Codes" | sed -e 's|/\.git/*$||' | fzf --header='git projects' --header-first --preview "tree -C -L 1 --dirsfirst {}" --tmux
