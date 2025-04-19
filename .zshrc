@@ -105,7 +105,6 @@ export PATH="$HOME/.local/scripts:$PATH"
 [ -f $HOME/.local_confs ] && source $HOME/.local_confs
 
 
-eval $(thefuck --alias)
 autoload -U compinit
 compinit -i
 
