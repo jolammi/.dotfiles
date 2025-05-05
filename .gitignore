@@ -1,5 +1,8 @@
 .dotfiles
+.dotnet
 .ssh
+.local/lib
+go
 Codes
 .vscode-server
 .cache
