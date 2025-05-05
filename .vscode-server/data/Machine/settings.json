@@ -123,6 +123,8 @@
   "latex-workshop.view.pdf.invert": 0.0,
   "latex-workshop.latex.autoBuild.run": "onSave",
   "latex-workshop.bind.enter.key": false,
+  "latex-workshop.docker.enabled": true,
+  "latex-workshop.docker.image.latex": "texlive/texlive:latest-full-doc-src",
   "workbench.colorTheme": "Gruvbox Material Dark",
   "gruvboxMaterial.darkPalette": "material",
   "gruvboxMaterial.darkWorkbench": "material",
