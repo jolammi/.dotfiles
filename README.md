@@ -2,6 +2,9 @@
 The dotfiles and also some notes to set up a new system from scratch with less work.  
 They are made for Ubuntu. Mileage may vary in other systems, especially non-Debian.  
 These exist primarily for my own sanity. However, if they are useful to you, feel free to use!  
+The dotfiles are written with that in mind that I will always have two computers - one for work and one for personal projects. Having both on the same computer needs some more work, which I am not willing to do right now, since I don't currently need it.
+
+Otherwise I've tried to make the dotfiles as modular as possible - should be usable with some small mods. Read this README carefully and you should be pretty good to go.
 
 ## Important files and folders for machine-specific stuff
 `.local_confs`: set machine-specific settings, env variables etc here  
