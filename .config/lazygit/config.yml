@@ -5,3 +5,5 @@ gui:
 promptToReturnFromSubprocess: false
 refresher:
   refreshInterval: 2
+git:
+  overrideGpg: true
