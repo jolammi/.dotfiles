@@ -76,3 +76,8 @@ tasks:
         make
         sudo make install
 
+  shell-utils:
+    cmds:
+      - sudo apt install fd-find
+      - ln -s $(which fdfind) ~/.local/bin/fd || true
+      - sudo apt install direnv
