@@ -47,8 +47,6 @@ dotfiles submodule update --init --recursive
 - Lazygit is included as a submodule, ensure go is installed and run go install 
   - Install Lazygit from https://github.com/jesseduffield/lazygit/tree/master?tab=readme-ov-file#go
 - install build deps for pyenv: https://github.com/pyenv/pyenv/wiki#suggested-build-environment
-- create a .dotfileconfig file to use the tmux-sessionizer properly, e.g.:
-`export DOTFILES_GIT_REPOS_DIR=$HOME/repos/`
 
 
 ### Git 
@@ -58,6 +56,10 @@ After cloning a repo, set the correct name and email with the helper functions i
 Set Git identity to new machine for the dotfiles repo:  
 ```
 setlocalgitidentity_dotfiles "Name" "email"
+- create a `.dotfileconfig` file to use the tmux-sessionizer properly, e.g.:
+```bash
+# ~/.dotfileconfig
+export DOTFILES_GIT_REPOS_DIR=$HOME/repos/
 ```
 
 For other repos, use

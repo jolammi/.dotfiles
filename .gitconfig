@@ -25,5 +25,6 @@
 [includeIf "gitdir:~/.dotfiles/"]
     path = .gitconfig.personal
 
+# This should point to the same directory than $DOTFILES_GIT_REPOS_DIR in .dotfileconfig
 [includeIf "gitdir:~/repos/"]
     path = .gitconfig.work
