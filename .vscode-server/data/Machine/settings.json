@@ -110,6 +110,7 @@
   "gitlens.hovers.annotations.changes": true,
   "gitlens.hovers.currentLine.changes": true,
   "gitlens.hovers.currentLine.over": "line",
+  "gitlens.plusFeatures.enabled": false,
   "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.profiles.linux": {
     "zsh": {
