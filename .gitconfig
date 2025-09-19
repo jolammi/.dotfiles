@@ -1,17 +1,17 @@
 [core]
-      excludesfile = ~/.git_global
-      editor = "nano -b -r 72"
+    excludesfile = ~/.git_global
+    editor = "nano -b -r 72"
 [commit]
-      template = ~/.gitmessage
+    template = ~/.gitmessage
 [fetch]
     # Delete outdated remote references when fetching
     prune = true
 [pull]
     rebase = true
 [alias]
-      fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
+    fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
 [user]
-	useConfigOnly = true
+    useConfigOnly = true
 
 # Remember to create these files below, if needed
 [includeIf "gitdir:~/.dotfiles/"]
