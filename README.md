@@ -17,7 +17,7 @@ These exist primarily for my own sanity. However, if they are useful to you, fee
 - Install zsh if it is not already installed
   - https://askubuntu.com/a/131838/1195630: `chsh -s $(which zsh)` (should also work on macOS)  
 - VS Code  
-- A good terminal emulator
+- A good terminal emulator, wezterm is nice and cross-platform
 
 ### Before cloning to a new machine
 - Install a nerd font for ligatures and p10k to work, e.g. Fira Code Nerd Font https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode  
