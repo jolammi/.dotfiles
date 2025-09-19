@@ -36,8 +36,21 @@ tasks:
       make && sudo make install
       tmux -V
 
-    #TODO add these:
-    # cmake https://askubuntu.com/a/865294/1195630
+  cmake:
+    env:
+      CMAKE_VERSION: "3.31"
+      CMAKE_VERSION_BUILD: "7"
+    dir: /tmp/cmake-build
+    cmds:
+      - |
+        echo "Installing cmake"
+        wget https://cmake.org/files/v$CMAKE_VERSION/cmake-$CMAKE_VERSION.$CMAKE_VERSION_BUILD.tar.gz
+        tar -xzvf cmake-$CMAKE_VERSION.$CMAKE_VERSION_BUILD.tar.gz
+        cd cmake-$CMAKE_VERSION.$CMAKE_VERSION_BUILD/
+        ./bootstrap
+        make -j$(nproc)
+        sudo make install
+        cmake --version
 
     # timewarrior https://github.com/GothenburgBitFactory/timewarrior?tab=readme-ov-file#building-timewarrior
     # sudo apt-get install asciidoctor
