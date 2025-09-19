@@ -19,13 +19,15 @@ printgray () {
 
 while [[ -z $venvpath ]]
 do
+    echo $(pwd)
+    echo "$DOTFILES_GIT_REPOS_DIR"
     if [[ "$(pwd)" == ~ ]]; then
             printred "Hit home root, abort"
             break
     fi
 
-    if [[ "$(pwd)" == ~/Codes ]]; then
-            printred "Hit Codes root, abort"
+    if [[ "$(pwd)" == "$DOTFILES_GIT_REPOS_DIR" ]]; then
+            printred "Hit repos root, abort"
             break
     fi
 
