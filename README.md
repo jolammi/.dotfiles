@@ -43,7 +43,7 @@ dotfiles submodule update --init --recursive
   - One fix was to symlink fd to `/usr/local/bin` but building with `task tmux` and refreshing shell session worked so I did not end up doing that.
 - Lazygit is included as a submodule, ensure go is installed and run go install 
   - Install Lazygit from https://github.com/jesseduffield/lazygit/tree/master?tab=readme-ov-file#go
-
+- install build deps for pyenv: https://github.com/pyenv/pyenv/wiki#suggested-build-environment
 - create a .dotfileconfig file to use the tmux-sessionizer properly, e.g.:
 `export DOTFILES_GIT_REPOS_DIR=$HOME/repos/`
 
