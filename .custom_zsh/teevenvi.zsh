@@ -1,5 +1,5 @@
 teevenvi () {
-  asd=$(pyenv versions | fzf | grep -oP "(\d+\.\d+\.\d+)")
+  asd=$(pyenv versions | fzf --tmux | grep -oP "(\d+\.\d+\.\d+)")
 
   if [ -z "$asd" ]
   then
