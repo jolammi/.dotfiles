@@ -3,6 +3,7 @@
       editor = "nano -b -r 72"
 [commit]
       template = ~/.gitmessage
+      gpgsign = true
 [fetch]
     # Delete outdated remote references when fetching
     prune = true
@@ -13,3 +14,15 @@
 [user]
 	name = Jouni Lammi
 	useConfigOnly = true
+[gpg]
+	format = ssh
+
+# Remember to create these files and add the following lines
+# [user]
+#     signingkey = <path/to/pubkey>
+
+[includeIf "gitdir:~/.dotfiles/"]
+    path = .gitconfig.personal
+
+[includeIf "gitdir:~/repos/"]
+    path = .gitconfig.work
