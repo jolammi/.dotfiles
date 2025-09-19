@@ -47,34 +47,26 @@ dotfiles submodule update --init --recursive
 - Lazygit is included as a submodule, ensure go is installed and run go install 
   - Install Lazygit from https://github.com/jesseduffield/lazygit/tree/master?tab=readme-ov-file#go
 - install build deps for pyenv: https://github.com/pyenv/pyenv/wiki#suggested-build-environment
-
-
-### Git 
-No global git user email exists in this repo because I use this repo on multiple machines, work and personal.
-After cloning a repo, set the correct name and email with the helper functions in `.custom_zsh/aliases.zsh`.
-
-Set Git identity to new machine for the dotfiles repo:  
-```
-setlocalgitidentity_dotfiles "Name" "email"
 - create a `.dotfileconfig` file to use the tmux-sessionizer properly, e.g.:
 ```bash
 # ~/.dotfileconfig
 export DOTFILES_GIT_REPOS_DIR=$HOME/repos/
 ```
+- Read the note about git configs and create them.
 
-For other repos, use
+### Git 
+Git usage is based on conditional configs. Dotfiles git config can be set in `.gitconfig.dotfiles`. The git config for work, personal projects etc. can be set in `.gitconfig.repos`. If your repos dir above is not `~/repos`, change the right path into `.gitconfig` (git config files apparently do not support variable expansion in includeif, which would be neat for this purpose. Needs more investigation to do it some other way.)
+Sample `.gitconfig.dotfiles` or `.gitconfig.repos`:
 ```
-setlocalgitidentity "Name" "email"
+[user]
+    signingkey = /path/to/pubkey
+    name = ...
+    email = ...
+[gpg]
+    format = ssh
+[commit]
+    gpgsign = true
 ```
 
-ZSH autocompletion is enabled in the config, and will keep this handy so it doesn't need to be typed out every time.
-
-Of course you can also create specific commands to e.g. `.local_confs` to set the identity without parameters, e.g.  
-```
-setlocalgitidentity_personal () {
-        git config --local user.name "Jouni Lammi"
-        git config --local user.email "myworkemail"
-}
-```  
 ## Thanks
 The basic layout and some of the scripts are borrowed from Sami Harju's dotfiles, https://github.com/samharju/.dotfiles.
