@@ -66,21 +66,21 @@ git_hard_reset () {
         return 1
     fi
 
-    echo -n "Press 'y' to continue with git hard reset to origin/$(git_main_branch) > "
+    echo -n "Press 'y' to continue with git hard reset to origin/$1 > "
     read -q key
     echo
     if [[ "$key" == "y" ]]; then
         echo "Fetching origin..."
         git fetch origin
-        echo "Hard resetting to fresh origin/$(git_main_branch)"
-        git reset --hard origin/$(git_main_branch)
+        echo "Hard resetting to fresh origin/$1"
+        git reset --hard origin/$1
     else
         echo "'y' not pressed. Aborting."
         return 1
     fi
 }
-alias ghr=git_hard_reset
-alias grh='ghr'
+alias grh='git_hard_reset $(git_current_branch)'
+alias grhm='git_hard_reset $(git_main_branch)'
 
 compdef _git review=git checkout
 
