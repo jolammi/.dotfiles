@@ -12,13 +12,14 @@
 [alias]
       fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
 [user]
-	name = Jouni Lammi
 	useConfigOnly = true
 [gpg]
 	format = ssh
 
 # Remember to create these files and add the following lines
 # [user]
+#     email = ...
+#     name = ...
 #     signingkey = <path/to/pubkey>
 
 [includeIf "gitdir:~/.dotfiles/"]
