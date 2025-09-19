@@ -4,7 +4,7 @@ alias c=clear
 alias clock='TZ=Europe/Helsinki tty-clock -bc -C7 -f "  %t%A %d %B %Y%n%t%t%tDay %j | Week %W"'
 alias bat=batcat
 alias lg=lazygit
-alias lgdf='lazygit --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+alias lgdf='lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 function cheat_func(){
     curl cheat.sh/$1
 }
