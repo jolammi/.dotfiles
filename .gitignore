@@ -28,3 +28,4 @@ go/bin
 .local/bin
 bin
 .gitconfig.*
+.dotfileconfig
