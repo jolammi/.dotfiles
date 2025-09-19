@@ -52,5 +52,27 @@ tasks:
         sudo make install
         cmake --version
 
-    # timewarrior https://github.com/GothenburgBitFactory/timewarrior?tab=readme-ov-file#building-timewarrior
-    # sudo apt-get install asciidoctor
+  timewarrior-deps:
+    cmds:
+      - |
+        echo "Installing other build deps"
+        sudo apt update -y
+        sudo apt install -y build-essential
+        sudo apt install -y asciidoctor
+
+  timewarrior:
+    env:
+      TIMEWARRIOR_VERSION: "1.8.0"
+    dir: /tmp/timewarrior
+    cmds:
+      - |
+        echo "Cloning timew source"
+        rm -rf timewarrior
+        git clone --recurse-submodules https://github.com/GothenburgBitFactory/timewarrior
+        cd timewarrior
+        git checkout v$TIMEWARRIOR_VERSION
+        echo "Building timewarrior"
+        cmake -DCMAKE_BUILD_TYPE=release .
+        make
+        sudo make install
+
