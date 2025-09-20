@@ -25,14 +25,9 @@ end
 wezterm.log_info(config)
 
 -- wezterm.config_builder()
-config.launch_menu = {}
 
 config.swallow_mouse_click_on_window_focus = true
-config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
-config.integrated_title_buttons = { 'Hide', 'Maximize', 'Close' }
-config.use_fancy_tab_bar = true
-config.show_tabs_in_tab_bar = false
-config.show_new_tab_button_in_tab_bar = false
+
 
 
 
@@ -50,18 +45,47 @@ config.window_frame = {
 }
 
 local bg_dir_root = ''
+
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
+  config.launch_menu = {}
   config.default_prog = {"ubuntu2404.exe"}
   table.insert(config.launch_menu, {
     label = 'Command line',
     args = { 'ubuntu2404.exe' },
   })
   bg_dir_root = 'C:/Users/jolammi/'
+
+  config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
+  config.integrated_title_buttons = { 'Hide', 'Maximize', 'Close' }
+  config.use_fancy_tab_bar = true
+  config.show_tabs_in_tab_bar = false
+  config.show_new_tab_button_in_tab_bar = false
+  config.hide_tab_bar_if_only_one_tab = false
+  config.show_tab_index_in_tab_bar = false
+  config.window_padding = {
+    left = 10,
+    right = 10,
+    top = 0,
+    bottom = 5,
+  }
 end
 
 if wezterm.target_triple == 'x86_64-unknown-linux-gnu' then
   local home = os.getenv("HOME")
   bg_dir_root = home .. '/'
+  config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
+  config.integrated_title_buttons = { 'Hide', 'Maximize', 'Close' }
+  config.use_fancy_tab_bar = true
+  config.show_tabs_in_tab_bar = false
+  config.show_new_tab_button_in_tab_bar = false
+  config.hide_tab_bar_if_only_one_tab = true
+  config.show_tab_index_in_tab_bar = false
+  config.window_padding = {
+    left = 2,
+    right = 2,
+    top = 10,
+    bottom = 0,
+  }
 end
 
 config.keys = {
@@ -78,12 +102,6 @@ config.keys = {
 -- local bg_path = bg_dir_root .. '.config/wezterm/white.jpg'
 local bg_path = bg_dir_root .. '.config/wezterm/monsteradeliciosa_dark.jpg'
 
-config.window_padding = {
-  left = 10,
-  right = 10,
-  top = 0,
-  bottom = 5,
-}
 config.window_background_image = bg_path
 config.window_close_confirmation = 'NeverPrompt'
 
@@ -91,8 +109,7 @@ config.window_close_confirmation = 'NeverPrompt'
 -- config.mouse_bindings = {
 
 --   }
-config.hide_tab_bar_if_only_one_tab = false
-config.show_tab_index_in_tab_bar = false
+
 
 config.colors = {
     -- The default text color
