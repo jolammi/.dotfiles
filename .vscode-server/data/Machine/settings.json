@@ -188,5 +188,11 @@
   "basedpyright.analysis.diagnosticMode": "workspace",
   "python.languageServer": "None",
   "basedpyright.analysis.ignore": ["venv", "venv*", "venv**"],
-  "basedpyright.analysis.exclude": ["venv", "venv*", "venv**"]
+  "basedpyright.analysis.exclude": ["venv", "venv*", "venv**"],
+  "github.copilot.enable": {
+    "*": false,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false
+  }
 }
