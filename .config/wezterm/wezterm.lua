@@ -60,7 +60,8 @@ if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
 end
 
 if wezterm.target_triple == 'x86_64-unknown-linux-gnu' then
-  bg_dir_root = '~/'
+  local home = os.getenv("HOME")
+  bg_dir_root = home .. '/'
 end
 
 config.keys = {
