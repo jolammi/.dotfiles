@@ -2,7 +2,16 @@
 local wezterm = require 'wezterm'
 
 local act = wezterm.action
+local mux = wezterm.mux
+
+wezterm.on('gui-startup', function(cmd)
+  local tab, pane, window = mux.spawn_window(cmd or {})
+  window:gui_window():maximize()
+end)
+
 local config = {}
+config.initial_rows = 200
+config.initial_cols = 300
 
 config.hyperlink_rules = {}
 for _, rule in ipairs(wezterm.default_hyperlink_rules()) do
