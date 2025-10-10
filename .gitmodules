@@ -42,3 +42,7 @@
 	path = .custom_zsh/plugins/timewarrior
 	url = https://github.com/svenXY/timewarrior
         ignore = dirty
+[submodule "watchexec"]
+	path = watchexec
+	url = https://github.com/watchexec/watchexec
+	ignore = dirty
