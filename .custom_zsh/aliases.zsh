@@ -25,7 +25,7 @@ alias asddf="dotfiles status"
 
 # Install go if not installed
 
-GO_VERSION=1.24.0
+GO_VERSION=1.25.0
 install_go () {
     if [[ $(go version || true) == "go version go${GO_VERSION} linux/amd64" ]]; then
         echo up to date
