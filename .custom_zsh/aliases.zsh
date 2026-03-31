@@ -12,6 +12,8 @@ function cheat_func(){
 alias cheat=cheat_func
 alias asd="git status"
 alias ch="code ."
+alias we=watchexec
+alias rg="rg --hidden"
 
 function git_worktree_add(){
     git worktree add ./worktrees/"$1" -b "$1"
