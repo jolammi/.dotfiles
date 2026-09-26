@@ -24,7 +24,7 @@ tasks:
 
   tmux:
     env:
-      TMUX_VERSION: 3.5a
+      TMUX_VERSION: 3.7c
     dir: '${HOME}'
     cmds:
      - |
@@ -64,7 +64,7 @@ tasks:
 
   timewarrior:
     env:
-      TIMEWARRIOR_VERSION: "1.8.0"
+      TIMEWARRIOR_VERSION: "1.9.1"
     dir: /tmp/timewarrior
     cmds:
       - |
