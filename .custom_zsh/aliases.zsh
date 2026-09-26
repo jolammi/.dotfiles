@@ -4,6 +4,7 @@ alias c=clear
 alias clock='TZ=Europe/Helsinki tty-clock -bc -C7 -f "  %t%A %d %B %Y%n%t%t%tDay %j | Week %W"'
 alias bat=batcat
 alias lg=lazygit
+alias gbt='git branch --sort "authordate" --format "%(HEAD) %(if)%(worktreepath)%(then)%(color:cyan)%(end)%(if)%(HEAD)%(then)%(color:green)%(end)%(align:width=12)%(authordate:short)%(end)%(align:width=32)%(refname:short)%(end) %(objectname:short) %(subject)%(color:reset) "'
 alias lgdf='lazygit --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 function cheat_func(){
     curl cheat.sh/$1
@@ -12,6 +13,7 @@ function cheat_func(){
 alias cheat=cheat_func
 alias asd="git status"
 alias ch="code ."
+alias cuh="cursor ."
 alias we=watchexec
 alias rg="rg --hidden"
 
@@ -22,22 +24,22 @@ function git_worktree_add(){
 alias gwa=git_worktree_add
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias asddf="dotfiles status"
+alias twaf='timew start :fill'
 
 # Install go if not installed
-
-GO_VERSION=1.25.0
 install_go () {
-    if [[ $(go version || true) == "go version go${GO_VERSION} linux/amd64" ]]; then
+    go version
+    if [[ $(go version || true) == "go version go$1 linux/amd64" ]]; then
         echo up to date
         return
     fi
-    wget https://go.dev/dl/go${GO_VERSION}.linux-amd64.tar.gz
+    wget https://go.dev/dl/go$1.linux-amd64.tar.gz
     sudo rm -rf /usr/local/go
-    sudo tar -C /usr/local -xzf go${GO_VERSION}.linux-amd64.tar.gz
+    sudo tar -C /usr/local -xzf go$1.linux-amd64.tar.gz
     go version
 }
 
-review () {
+review_in_wt () {
     commitish="$1"
     #go to project root to get folder name
     cd "$(git rev-parse --show-toplevel)" || return 1
