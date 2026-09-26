@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+mode="${1:-text}"
+
+if [ "$mode" = "--tmux-segment" ]; then
+  shift
+  previous_bg="${1:-colour235}"
+  active_bg="${2:-colour227}"
+  inactive_bg="${3:-red}"
+  text_fg="${4:-colour233}"
+  status_bg="${5:-colour233}"
+fi
+
+print_result() {
+  local is_active="$1"
+  local text="$2"
+
+  if [ "$mode" = "--tmux-segment" ]; then
+    local segment_bg="$inactive_bg"
+
+    if [ "$is_active" = "1" ]; then
+      segment_bg="$active_bg"
+    fi
+
+    printf '#[fg=%s,bg=%s,nobold]#[fg=%s,bg=%s,nobold] %s #[fg=%s,bg=%s,nobold]' \
+      "$previous_bg" "$segment_bg" \
+      "$text_fg" "$segment_bg" "$text" \
+      "$segment_bg" "$status_bg"
+  else
+    printf '%s' "$text"
+  fi
+}
+
+json="$(timew get dom.active.json 2>/dev/null || true)"
+
+if [ -z "$json" ]; then
+  print_result 0 'No active time tracking!'
+  exit 0
+fi
+
+start="$(jq -r '.start // empty' <<<"$json")"
+tags="$(jq -r '.tags // [] | join(", ")' <<<"$json")"
+
+if [ -z "$start" ]; then
+  print_result 0 'tw: inactive'
+  exit 0
+fi
+
+if [[ "$start" =~ ^([0-9]{4})([0-9]{2})([0-9]{2})T([0-9]{2})([0-9]{2})([0-9]{2})Z$ ]]; then
+  start_for_date="${BASH_REMATCH[1]}-${BASH_REMATCH[2]}-${BASH_REMATCH[3]} ${BASH_REMATCH[4]}:${BASH_REMATCH[5]}:${BASH_REMATCH[6]} UTC"
+else
+  start_for_date="$start"
+fi
+
+start_local="$(date -d "$start_for_date" '+%H:%M')"
+start_epoch="$(date -d "$start_for_date" '+%s')"
+now_epoch="$(date '+%s')"
+
+elapsed=$((now_epoch - start_epoch))
+(( elapsed < 0 )) && elapsed=0
+
+days=$((elapsed / 86400))
+hours=$(((elapsed % 86400) / 3600))
+minutes=$(((elapsed % 3600) / 60))
+
+if (( days > 0 )); then
+  duration="${days}d ${hours}h ${minutes}m"
+elif (( hours > 0 )); then
+  duration="${hours}h ${minutes}m"
+else
+  duration="${minutes}m"
+fi
+
+if [ -z "$tags" ]; then
+  tags="untagged"
+fi
+
+print_result 1 "tw: $tags | from $start_local ($duration)"
