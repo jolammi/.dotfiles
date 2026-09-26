@@ -24,7 +24,8 @@ ZSH_CUSTOM=$HOME/.custom_zsh
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git tmux z docker docker-compose python pyenv zsh-syntax-highlighting zsh-autosuggestions timewarrior)
+plugins=(git tmux z docker docker-compose python zsh-syntax-highlighting zsh-autosuggestions timewarrior)
+zstyle ':omz:plugins:docker' legacy-completion yes
 
 
 source $ZSH/oh-my-zsh.sh
@@ -40,8 +41,14 @@ source $ZSH/oh-my-zsh.sh
 # Pyenv setup
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-pyenv deactivate > /dev/null 2>&1
+[[ -d $PYENV_ROOT/shims ]] && export PATH="$PYENV_ROOT/shims:$PATH"
+if [[ -x "$PYENV_ROOT/bin/pyenv" ]]; then
+    pyenv() {
+        unset -f pyenv
+        eval "$("$PYENV_ROOT/bin/pyenv" init - --no-rehash zsh)"
+        pyenv "$@"
+    }
+fi
 
 
 # ADD GO TO PATH
@@ -51,8 +58,19 @@ export PATH=$PATH:$HOME/go/bin
 
 # nvm setup
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# lazy load node related stuff
+load_nvm() {
+    unset -f nvm node npm npx
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+}
+nvm() { load_nvm; nvm "$@"; }
+node() { load_nvm; node "$@"; }
+npm() { load_nvm; npm "$@"; }
+npx() { load_nvm; npx "$@"; }
 
 # Add bin folders to path
 [ -d "$HOME/bin" ] || mkdir -p "$HOME/bin"
@@ -70,9 +88,7 @@ fi
 export PATH="$HOME/.local/scripts:$PATH"
 
 [ -f $HOME/.local_confs ] && source $HOME/.local_confs
+# autoload -U compinit
+#compinit -i
 
-autoload -U compinit
-compinit -i
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(task --completion zsh)"
