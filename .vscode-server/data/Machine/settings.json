@@ -10,10 +10,14 @@
   "trailing-spaces.highlightCurrentLine": false,
   "workbench.colorCustomizations": {
     "editorRuler.foreground": "#47474779",
-    "editorWhitespace.foreground": "#a7a7a291",
+    "editorWhitespace.foreground": "#7c7c7a6e",
     "selection.background": "#a9b5b9",
     "editorIndentGuide.background1": "#ffffff32",
     "editor.rangeHighlightBorder": "#88888847",
+    "editor.findMatchBackground": "#ff000080",
+    "editor.findMatchHighlightBackground": "#4400ff50",
+    "editor.findMatchBorder": "#ff0000",
+    "editor.findMatchHighlightBorder": "#ff000080",
     // "window.activeBorder": "#900000",
     "editor.selectionBackground": "#c0202dc4",
     "editor.selectionHighlightBackground": "#3c9bf38e",
@@ -186,13 +190,15 @@
   "basedpyright.analysis.inlayHints.genericTypes": false,
   "basedpyright.analysis.typeCheckingMode": "standard",
   "basedpyright.analysis.diagnosticMode": "workspace",
-  "python.languageServer": "None",
+  "python.languageServer": "Pylance",
   "basedpyright.analysis.ignore": ["venv", "venv*", "venv**"],
   "basedpyright.analysis.exclude": ["venv", "venv*", "venv**"],
   "github.copilot.enable": {
     "*": false,
     "plaintext": false,
     "markdown": false,
-    "scminput": false
+    "scminput": false,
+    "latex": false,
+    "python": false
   }
 }
