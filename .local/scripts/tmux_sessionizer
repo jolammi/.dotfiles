@@ -7,8 +7,8 @@ if [ -z "$project" ]; then
 fi
 
 sessari="$(basename "$project")"
-sessari_cleaned="${sessari/./_}"
-if ! tmux has-session -t="$sessari_cleaned" 2> /dev/null; then
+sessari_cleaned="${sessari//./_}"
+if ! tmux has-session -t "$sessari_cleaned" 2> /dev/null; then
     tmux new-session -ds "$sessari_cleaned" -c "$project"
 fi
 
