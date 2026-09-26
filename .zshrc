@@ -92,3 +92,4 @@ export PATH="$HOME/.local/scripts:$PATH"
 #compinit -i
 
 eval "$(task --completion zsh)"
+export EDITOR=nano
