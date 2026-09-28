@@ -55,6 +55,7 @@ config.window_frame = {
 
 local bg_dir_root = ''
 
+config.default_cursor_style = 'SteadyBlock'
 if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
   config.launch_menu = {}
   config.default_prog = {"ubuntu2404.exe"}
@@ -110,6 +111,7 @@ config.keys = {
 
 -- local bg_path = bg_dir_root .. '.config/wezterm/white.jpg'
 local bg_path = bg_dir_root .. '.config/wezterm/monsteradeliciosa_dark.jpg'
+local bg_path = bg_dir_root .. '.config/wezterm/forest_dark.jpg'
 
 config.window_background_image = bg_path
 config.window_close_confirmation = 'NeverPrompt'
